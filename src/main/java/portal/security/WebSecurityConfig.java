@@ -42,6 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( "/portal/**").permitAll()
                 //.antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/paypal/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

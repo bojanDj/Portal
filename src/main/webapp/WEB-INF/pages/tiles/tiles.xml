@@ -90,5 +90,46 @@
                     value="/WEB-INF/pages/login.jsp">
         </put-attribute>
     </definition>
+    
+    <!--paypal-->
+    <definition name="paypal/home"
+                template="/WEB-INF/pages/tiles/layout/layout.jsp">
+        <put-attribute name="title" value="Prijava"></put-attribute>
+        <put-attribute name="header"
+                       value="/WEB-INF/pages/tiles/template/header.jsp">
+        </put-attribute>
+        <put-attribute name="footer"
+                       value="/WEB-INF/pages/tiles/template/footer.jsp">
+        </put-attribute>
+        <put-attribute name="body"
+                    value="/WEB-INF/pages/portal/pages/paypal/home.jsp">
+        </put-attribute>
+    </definition>
+    <definition name="paypal/cancel"
+                template="/WEB-INF/pages/tiles/layout/layout.jsp">
+        <put-attribute name="title" value="Prijava"></put-attribute>
+        <put-attribute name="header"
+                       value="/WEB-INF/pages/tiles/template/header.jsp">
+        </put-attribute>
+        <put-attribute name="footer"
+                       value="/WEB-INF/pages/tiles/template/footer.jsp">
+        </put-attribute>
+        <put-attribute name="body"
+                    value="/WEB-INF/pages/portal/pages/paypal/cancel.html">
+        </put-attribute>
+    </definition>
+    <definition name="paypal/success"
+                template="/WEB-INF/pages/tiles/layout/layout.jsp">
+        <put-attribute name="title" value="Prijava"></put-attribute>
+        <put-attribute name="header"
+                       value="/WEB-INF/pages/tiles/template/header.jsp">
+        </put-attribute>
+        <put-attribute name="footer"
+                       value="/WEB-INF/pages/tiles/template/footer.jsp">
+        </put-attribute>
+        <put-attribute name="body"
+                    value="/WEB-INF/pages/portal/pages/paypal/success.html">
+        </put-attribute>
+    </definition>
 
 </tiles-definitions>

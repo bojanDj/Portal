@@ -30,6 +30,7 @@ import portal.jpa.config.DatabaseConfiguration;
     "portal.repository",
     "portal.service",
     "portal.security",
+    "portal.paypal",
     "portal.jpa.config",
     "portal.dto",
     "portal.validator",
