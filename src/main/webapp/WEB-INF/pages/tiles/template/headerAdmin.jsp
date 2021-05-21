@@ -42,7 +42,8 @@
           </li>-->
           <li><a href="<c:url value = "/admin/addStory"/>">Dodaj pricu!</a></li>
           <li><a href="<c:url value = "/admin/comments"/>">Komentari</a></li>
-          <li><a href="<c:url value = "/logout"/>">Izloguj se</a></li>
+          <c:if test="${not empty user}"><li><a href="<c:url value = "/logout"/>">${user}, izloguj se</a></li></c:if>
+<c:if test="${empty user}"><li><a href="<c:url value = "/login"/>">Uloguj se</a></li></c:if> 
         </ul>
       </nav>
       <!-- ################################################################################################ -->

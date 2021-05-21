@@ -6,6 +6,7 @@
 package portal.dto;
 
 import java.io.Serializable;
+import java.sql.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +28,15 @@ public class Comment implements Serializable{
     private String username;
     private String komentar;
     private int prihvacen;
+    private Date vreme;
+
+    public Date getVreme() {
+        return vreme;
+    }
+
+    public void setVreme(Date vreme) {
+        this.vreme = vreme;
+    }
 
     public int getPrihvacen() {
         return prihvacen;

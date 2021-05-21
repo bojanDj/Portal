@@ -76,8 +76,8 @@
     <!-- ################################################################################################ -->
     <figure id="introblocks">
       <ul class="nospace group">
-        <li class="one_third first"><a href="#"><img src="https://www.jungletribe.rs/files/images/DALEKE%20DESTINACIJE/Azija/Maldivi/Maldivi%20cover%20photo%20i%20baner/maldives-1993704_1280.jpg" alt=""></a></li>
-        <li class="one_third"><a href="#"><img src="https://soleazur.rs/uploads/0000/1/2021/02/25/kuba-kategorija.jpg" alt=""></a></li>
+        <li class="one_third first"><a href="#"><img src="https://www.planetware.com/photos-large/PHI/philippines-luzon-saud-beach.jpg" alt=""></a></li>
+        <li class="one_third"><a href="#"><img src="https://www.telegraph.co.uk/content/dam/Travel/Destinations/Africa/Mauritius/Mauritius---Beaches---Tropical-beach.jpg" alt=""></a></li>
         <li class="one_third"><a href="#"><img src="https://www.sattravel.rs/images/smestaj/galerija/sat-travel-cuba%20(6).jpg" alt=""></a></li>
       </ul>
     </figure>
@@ -90,10 +90,11 @@
 <!-- ################################################################################################ -->
 <div class="wrapper row3">
   <main class="hoc container clear"> 
+      <h3>${message}</h3>
     <!-- main body -->
     <!-- ################################################################################################ -->
     <article class="group btmspace-80">
-      <div class="two_third first"><img class="borderedbox inspace-10" src="${news[fn:length(news)-1].url}" alt=""></div>
+      <div class="two_third first"><img class="borderedbox inspace-10" src="${news[fn:length(news)-1].slike[0].URL}" alt=""></div>
       <div class="one_third">
         <h6 class="heading">${news[fn:length(news)-1].naslov}</h6>
         <ul class="nospace meta">
@@ -101,7 +102,7 @@
           <li><i class="fa fa-tag"></i> <a href="#">Tag Name</a></li>
         </ul>
         <p>${news[fn:length(news)-1].kratakOpis}</p>
-        <footer class="nospace"><a class="btn" href="<c:url value = "/portal/new/${news[fn:length(news)-1].id}"/>">Full Story &raquo;</a></footer>
+        <footer class="nospace"><a class="btn" href="<c:url value = "/portal/new/${news[fn:length(news)-1].id}"/>">Cela prica &raquo;</a></footer>
       </div>
     </article>
     <!-- ################################################################################################ -->
@@ -111,14 +112,18 @@
         <c:forEach var="new1" items="${news}" varStatus="loop">
             <c:if test="${!loop.last}">
       <li class="one_third">
-        <article><a href="#"><img src="${new1.url}" alt=""></a>
+        <article><a href="#"><img src="${new1.slike[0].URL}" alt=""></a>
           <h6 class="heading">${new1.naslov}</h6>
           <ul class="nospace meta">
             <li><i class="fa fa-user"></i> <a href="#">Admin</a></li>
             <li><i class="fa fa-tag"></i> <a href="#">Tag Name</a></li>
           </ul>
           <p>${new1.kratakOpis}</p>
-          <footer class="nospace"><a class="btn" href="<c:url value = "/portal/new/${new1.id}"/>">Full Story &raquo;</a></footer>
+          <footer class="nospace">
+              <a class="btn" href="<c:url value = "/portal/new/${new1.id}"/>">Cela prica &raquo;
+              </a>
+                 <c:if test="${!premium && new1.premium}"><img style="width: 40px; height: 40px; margin-top: 30px;" src="https://store-images.s-microsoft.com/image/apps.3543.13685793528492109.819f1a0a-5c6d-4efb-b2b6-5fd3aed09f5e.dcf3b1f1-69f0-41b1-96d7-56e864885e38?mode=scale&q=90&h=300&w=300"></c:if>
+          </footer>
         </article>
       </li>
       </c:if>

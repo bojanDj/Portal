@@ -24,13 +24,12 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
 
-//        Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-//
-//        if (roles.contains("ADMIN")) {
-//            httpServletResponse.sendRedirect("/Skola/admin/homeAdmin");
-//        } else {
-//            httpServletResponse.sendRedirect("/Skola/homeUser");
-//        }
-          httpServletResponse.sendRedirect("/Portal/admin/home");
+        Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+
+        if (roles.contains("ADMIN")) {
+            httpServletResponse.sendRedirect("/Portal/admin/home");
+        } else {
+            httpServletResponse.sendRedirect("/Portal/portal/home");
+        }
     }
 }

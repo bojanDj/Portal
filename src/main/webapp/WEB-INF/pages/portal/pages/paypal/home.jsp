@@ -78,7 +78,6 @@ label {
 }
 
 .btn {
-  background-color: #4CAF50;
   color: white;
   padding: 12px;
   margin: 10px 0;
@@ -87,10 +86,6 @@ label {
   border-radius: 3px;
   cursor: pointer;
   font-size: 17px;
-}
-
-.btn:hover {
-  background-color: #45a049;
 }
 
 a {
@@ -119,46 +114,35 @@ span.price {
     </style>
 </head>
 <body>
-<div class="row">
+    <div class="row" style="margin-top: 2%;">
+        <h3>${message}</h3>
     <div class="col-75">
         <div class="container">
             <form:form method="post"  action="/Portal/portal/pay" modelAttribute="order">
                 <div class="col-50">
-                    <h3>Payment</h3>
-                    <h3>${o.currency}</h3>
-                    <label>Accepted Cards</label>
+                    <h3>Uplata za premium nalog.</h3>
+                    <label>Kartice koje prihvatamo:</label>
                     <div class="icon-container">
                         <i class="fa fa-cc-visa" style="color:navy;"></i>
                         <i class="fa fa-cc-amex" style="color:blue;"></i>
                         <i class="fa fa-cc-mastercard" style="color:red;"></i>
                         <i class="fa fa-cc-discover" style="color:orange;"></i>
                     </div>
-                    <label for="price">Total</label>
-                    <form:input type="text" id="price" name="price" value="10" path="price"/>
-                    <label for="currency">Currency</label>
-                    <form:input type="text" id="currency" name="currency" placeholder="Enter Currency" path="currency"/>
-                    <label for="method">Payment Method</label>
-                    <form:input type="text" id="method" name="method" placeholder="Payment Method" path="method"/>
-                    <label for="intent">Intent</label>
-                    <form:input type="text" id="intent" name="intent" value="sale" path="intent"/>
-                    <label for="description">Payment Description</label>
-                    <form:input type="text" id="description" name="description" placeholder="Payment Description" path="description"/>
+                    <label for="price">Iznos: 10 USD</label>
+                    <%--<form:input type="text" id="price" disabled="disabled" name="price" value="10" path="price" />--%>
+                    <!--<label for="currency">Currency</label>-->
+                    <%--<form:input type="text" id="currency" name="currency" placeholder="Enter Currency" path="currency"/>--%>
+                    <!--<label for="method">Payment Method</label>-->
+                    <%--<form:input type="text" id="method" name="method" placeholder="Payment Method" path="method"/>--%>
+                    <!--<label for="intent">Intent</label>-->
+                    <%--<form:input type="text" id="intent" name="intent" value="sale" path="intent"/>--%>
+                    <!--<label for="description">Payment Description</label>-->
+                    <%--<form:input type="text" id="description" name="description" placeholder="Payment Description" path="description"/>--%>
 
                 </div>
 
-                <input type="submit" value="Continue to checkout" class="btn">
-            </form:form>>
-        </div>
-    </div>
-    <div class="col-25">
-        <div class="container">
-            <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-            <p><a href="#">Product 1</a> <span class="price">$1</span></p>
-            <p><a href="#">Product 2</a> <span class="price">$4</span></p>
-            <p><a href="#">Product 3</a> <span class="price">$3</span></p>
-            <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-            <hr>
-            <p>Total <span class="price" style="color:black"><b>$10</b></span></p>
+                <input type="submit" value="Bicete preusmereni na PayPal portal" class="btn">
+            </form:form>
         </div>
     </div>
 </div>

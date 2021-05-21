@@ -89,9 +89,9 @@ Licence URI: https://www.os-templates.com/template-terms
     <div class="content three_quarter"> 
       <!-- ################################################################################################ -->
       <h1>${story.naslov}</h1>
-      <img class="imgr borderedbox inspace-5" src="../images/demo/imgr.gif" alt="">
+      <img class="imgr borderedbox inspace-5" src="${story.slike[1].URL}" alt="">
       <p>${story.kratakOpis}</p>
-      <img class="imgl borderedbox inspace-5" src="${story.url}" alt="">
+      <img class="imgl borderedbox inspace-5" src="${story.slike[0].URL}" alt="">
       <p>${story.tekst}</p>      
       <div id="comments">
         <h2>Komentari</h2>
@@ -105,7 +105,7 @@ Licence URI: https://www.os-templates.com/template-terms
                 <address>
                 By <a href="#">${kom.username}</a>
                 </address>
-                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
+                <time datetime="${kom.vreme}">${kom.vreme}</time>
               </header>
               <div class="comcont">
                   <p>${kom.komentar}</p>

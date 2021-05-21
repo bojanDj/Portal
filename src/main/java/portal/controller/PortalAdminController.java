@@ -43,6 +43,8 @@ public class PortalAdminController {
     @RequestMapping(value = "/addStory", method = RequestMethod.GET)
     public ModelAndView addStory(Principal principal) {
         ModelAndView modelAndView = new ModelAndView("admin/addStory");
+        if (principal != null)
+            modelAndView.addObject("user", principal.getName());
         return modelAndView;
     }
     
@@ -50,6 +52,8 @@ public class PortalAdminController {
     public ModelAndView comments(Principal principal) {
         ModelAndView modelAndView = new ModelAndView("admin/comments");
         modelAndView.addObject("comments", newService.getAllNotVerifiedComments());
+        if (principal != null)
+            modelAndView.addObject("user", principal.getName());
         return modelAndView;
     }
     
@@ -57,6 +61,9 @@ public class PortalAdminController {
     public ModelAndView home(Principal principal) {
         ModelAndView modelAndView = new ModelAndView("admin/home");
         modelAndView.addObject("news", newService.getAllNews());
+        modelAndView.addObject("premium", true);
+        if (principal != null)
+            modelAndView.addObject("user", principal.getName());
         return modelAndView;
     }
     
@@ -69,6 +76,7 @@ public class PortalAdminController {
     public ModelAndView addStoryP(@ModelAttribute @Validated Story story,
                                     Principal principal) {
         ModelAndView modelAndView = new ModelAndView("redirect:admin/addStory");
+        story.getSlike().get(0).setVest(story);
         newService.addStory(story);
         return modelAndView;
     }

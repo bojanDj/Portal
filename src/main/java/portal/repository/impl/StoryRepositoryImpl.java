@@ -5,6 +5,8 @@
  */
 package portal.repository.impl;
 
+import portal.dto.Payment;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -87,6 +89,26 @@ public class StoryRepositoryImpl implements StoryRepository {
     @Override
     public void addStory(Story story) {
         entityManager.persist(story);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public Date getLastPayDateByUsername(String username) {
+        String query = "Select p from Payment p where Username = :username";
+        
+        return  entityManager.createQuery(query, Payment.class).setParameter("username", username).getResultList().get(0).getLastPay();
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void updatePayment(String username) {
+        String query = "Select p from Payment p where Username = :username";
+        Payment p = entityManager.createQuery(query, Payment.class).setParameter("username", username).getResultList().get(0);
+        Date datum = new Date(new java.util.Date().getTime());
+        p.setLastPay(datum);
+//        String query = "Update Payment p set lastPay = SYSTIMESTAMP where Username = :username";
+//        entityManager.createQuery(query).setParameter("username", username);
+        entityManager.merge(p);
     }
     
 }

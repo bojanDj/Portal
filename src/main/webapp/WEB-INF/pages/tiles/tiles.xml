@@ -94,9 +94,9 @@
     <!--paypal-->
     <definition name="paypal/home"
                 template="/WEB-INF/pages/tiles/layout/layout.jsp">
-        <put-attribute name="title" value="Prijava"></put-attribute>
+        <put-attribute name="title" value="Uplata"></put-attribute>
         <put-attribute name="header"
-                       value="/WEB-INF/pages/tiles/template/header.jsp">
+                       value="/WEB-INF/pages/tiles/template/headerUser.jsp">
         </put-attribute>
         <put-attribute name="footer"
                        value="/WEB-INF/pages/tiles/template/footer.jsp">

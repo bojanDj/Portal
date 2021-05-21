@@ -6,6 +6,7 @@
 package portal.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -43,10 +44,6 @@ public class Authorities implements Serializable{
     public void setUsername(String username) {
         this.username = username;
     }
-
-    
-
-    
 
     public String getAuthority() {
         return authority;

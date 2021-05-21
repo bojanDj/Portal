@@ -16,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -30,12 +32,32 @@ public class Story implements Serializable{
     private String naslov;
     private String kratakOpis;
     private String tekst;
-    private String url;
     @OneToMany(fetch=FetchType.EAGER, mappedBy="vest", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Comment> komentari;
+    @OneToMany(fetch=FetchType.EAGER, mappedBy="vest", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Image> slike;
+    private boolean premium;
 
     public Story() {
         
+    }
+
+    public boolean isPremium() {
+        return premium;
+    }
+
+    public void setPremium(boolean premium) {
+        this.premium = premium;
+    }
+
+    public List<Image> getSlike() {
+        return slike;
+    }
+
+    public void setSlike(List<Image> slike) {
+        this.slike = slike;
     }
 
     public List<Comment> getKomentari() {
@@ -85,18 +107,12 @@ public class Story implements Serializable{
         this.tekst = tekst;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     @Override
     public String toString() {
-        return "New{" + "id=" + id + ", naslov=" + naslov + ", kratakOpis=" + kratakOpis + ", tekst=" + tekst + ", url=" + url + ", komentari=" + komentari + '}';
+        return "Story{" + "id=" + id + ", naslov=" + naslov + ", kratakOpis=" + kratakOpis + ", tekst=" + tekst + ", komentari=" + komentari + ", slike=" + slike + '}';
     }
+
+    
     
     
     

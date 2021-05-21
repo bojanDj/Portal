@@ -106,7 +106,7 @@ Licence URI: https://www.os-templates.com/template-terms
           </div>
           <div class="one_third">
             <label for="url">Url</label>
-          <form:input type="url" name="url" id="url" value="" size="22" path="url"></form:input>
+          <form:input type="url" name="url" id="url" value="" size="22" path="slike[0].URL"></form:input>
           </div>
           <div class="block clear">
             <label for="comment">Prica</label>

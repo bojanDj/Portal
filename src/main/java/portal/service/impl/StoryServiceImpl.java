@@ -1,5 +1,6 @@
 package portal.service.impl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,16 @@ public class StoryServiceImpl implements StoryService {
     @Override
     public void addStory(Story story) {
         newRepository.addStory(story);
+    }
+
+    @Override
+    public Date getLastPayDateByUsername(String username) {
+        return newRepository.getLastPayDateByUsername(username);
+    }
+
+    @Override
+    public void updatePayment(String username) {
+        newRepository.updatePayment(username);
     }
 
 

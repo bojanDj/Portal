@@ -5,6 +5,7 @@
  */
 package portal.repository;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import portal.dto.Authorities;
@@ -25,4 +26,6 @@ public interface StoryRepository {
     void declineCommentByID(int storyID);
     void updateStory(Story story);
     void addStory(Story story);
+    Date getLastPayDateByUsername(String username);
+    void updatePayment(String username);
 }
