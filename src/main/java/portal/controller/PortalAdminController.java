@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import portal.dto.Comment;
 import portal.dto.Story;
 import portal.service.StoryService;
@@ -74,10 +75,16 @@ public class PortalAdminController {
     
     @RequestMapping(value = "/addStory", method = RequestMethod.POST)
     public ModelAndView addStoryP(@ModelAttribute @Validated Story story,
-                                    Principal principal) {
-        ModelAndView modelAndView = new ModelAndView("redirect:admin/addStory");
+                                    Principal principal,
+                                    RedirectAttributes redirectAttrs) {
+        ModelAndView modelAndView = new ModelAndView("redirect:addStory");
         story.getSlike().get(0).setVest(story);
-        newService.addStory(story);
+        try {
+            newService.addStory(story);
+            redirectAttrs.addFlashAttribute("message", "Nova prica je uspesno uneta!");
+        } catch (Exception e){
+            redirectAttrs.addFlashAttribute("message", "Doslo je do greske, pokusajte ponovo.");
+        }
         return modelAndView;
     }
     

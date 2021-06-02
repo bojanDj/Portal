@@ -16,6 +16,10 @@ Licence URI: https://www.os-templates.com/template-terms
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.mySlides {display:none;}
+</style>
 </head>
 <body id="top">
 <!-- ################################################################################################ -->
@@ -92,7 +96,17 @@ Licence URI: https://www.os-templates.com/template-terms
       <img class="imgr borderedbox inspace-5" src="${story.slike[1].URL}" alt="">
       <p>${story.kratakOpis}</p>
       <img class="imgl borderedbox inspace-5" src="${story.slike[0].URL}" alt="">
-      <p>${story.tekst}</p>      
+      <p>${story.tekst}</p>   
+      <h2 class="w3-center">Galerija</h2>
+
+<div class="w3-content w3-display-container">
+  <img class="mySlides" src="${story.slike[2].URL}" style="width:100%">
+  <img class="mySlides" src="${story.slike[1].URL}" style="width:100%">
+  <img class="mySlides" src="${story.slike[0].URL}" style="width:100%">
+
+  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+</div>
       <div id="comments">
         <h2>Komentari</h2>
         <ul>
@@ -119,7 +133,7 @@ Licence URI: https://www.os-templates.com/template-terms
         <form:form action="${pageContext.request.contextPath}/portal/new/story${story.id}/addComment" method="POST" modelAttribute="comment">
           <div class="one_half first">
             <label for="name">Ime <span>*</span></label>
-            <form:input type="text" name="name" id="name" value="" size="22" path="username"></form:input>
+            <form:input type="text" name="name" id="name" value="${user}" size="22" path="username"></form:input>
           </div>
           <div class="one_half">
             <label for="email">Mail <span>*</span></label>
@@ -130,7 +144,7 @@ Licence URI: https://www.os-templates.com/template-terms
             <form:textarea name="comment" id="comment" cols="25" rows="10" path="komentar"></form:textarea>
           </div>
           <div>
-                <button type="submit" name="submit" href="/">Dodaj komentar</button>
+                <button class="btn" type="submit" name="submit" href="/">Dodaj komentar</button>
           </div>
         </form:form>
       </div>
@@ -144,5 +158,24 @@ Licence URI: https://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
 </body>
 </html>

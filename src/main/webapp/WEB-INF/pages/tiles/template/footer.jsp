@@ -8,8 +8,8 @@
 <div class="wrapper bgded overlay coloured" style="background-image:url('images/demo/backgrounds/02.png');">
   <article class="hoc cta clear"> 
     <!-- ################################################################################################ -->
-    <h6 class="three_quarter first">Quis orci neque praesent posuere venenatis tempor</h6>
-    <footer class="one_quarter"><a class="btn" href="#">Mauris sit rhoncus &raquo;</a></footer>
+    <h6 class="three_quarter first">Proputujte svet iz fotelje!</h6>
+    <footer class="one_quarter"><a class="btn" href="#">Zapocni avanturu &raquo;</a></footer>
     <!-- ################################################################################################ -->
   </article>
 </div>

@@ -95,8 +95,8 @@ public class PortalNewsController {
             Calendar cal2 = Calendar.getInstance();
             cal.setTime(lastPay);
             cal2.setTime(new Date());
-            cal.add(Calendar.MONTH, -1);
-            if (cal.before(cal2)) premium = true;
+            cal2.add(Calendar.MONTH, -1);
+            if (cal.after(cal2)) premium = true;
         }
         return premium;
     }

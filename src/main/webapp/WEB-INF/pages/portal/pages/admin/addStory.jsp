@@ -22,6 +22,19 @@ Licence URI: https://www.os-templates.com/template-terms
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<style>
+    #wrapper {
+    width: 500px;
+    overflow: hidden; /* will contain if #first is longer than #second */
+}
+#first {
+    width: 5%;
+    float:left; /* add this */
+}
+#second {
+    overflow: hidden; /* if you don't want #second to wrap below #first */
+}
+</style>
 </head>
 <body id="top">
 <!-- ################################################################################################ -->
@@ -94,6 +107,7 @@ Licence URI: https://www.os-templates.com/template-terms
     <!-- ################################################################################################ -->
     <div class="content three_quarter">     
       <div id="comments">
+          <h1>${message}</h1>
         <h2>Unesite novu uzbudljivu pricu!</h2>
         <form:form action="${pageContext.request.contextPath}/admin/addStory" method="POST" modelAttribute="story">
           <div class="one_third first">
@@ -112,8 +126,12 @@ Licence URI: https://www.os-templates.com/template-terms
             <label for="comment">Prica</label>
             <form:textarea name="comment" id="comment" cols="25" rows="10" path="tekst"></form:textarea>
           </div>
+          <div id="wrapper">
+            <div id="first"><form:radiobutton path="premium" value="true"></form:radiobutton></div>
+            <div id="second">Premium prica?</div>
+          </div>
           <div>
-                <button type="submit" name="submit" href="/">Dodaj pricu</button>
+              <button type="submit" name="submit" class="btn" href="/">Dodaj pricu</button>
           </div>
         </form:form>
       </div>
