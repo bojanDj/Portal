@@ -31,22 +31,22 @@
       <ul class="slides">
         <li>
             <article>
-            <p>Condimentum</p>
-            <h3 class="heading">Ligula at fermentum</h3>
-            <p>Sodales sapien donec porttitor dolor nec elit</p>
-            <footer><a class="btn" href="#">Luctus suscipit in</a></footer>
+            <p>Neverovatne</p>
+            <h3 class="heading">Premijerne price sa putovanja</h3>
+            <p>Na samo jedan klik od Vas</p>
+            <footer><a class="btn" href="#">Dozivite avanturu</a></footer>
           </article>
         </li>
         <li>
           <article>
-            <p>Laoreet</p>
-            <h3 class="heading">Iaculis interdum</h3>
-            <p>Nulla scelerisque posuere convallis</p>
+            <p>Najbolje</p>
+            <h3 class="heading">Ponude aranzmana</h3>
+            <p>Neka leto 2020. pocne odmah</p>
             <footer>
               <form class="group" method="post" action="#">
                 <fieldset>
                   <legend>Sign-Up:</legend>
-                  <input type="email" value="" placeholder="Email Here&hellip;">
+                  <input type="email" value="" placeholder="Email&hellip;">
                   <button class="fa fa-sign-in" type="submit" title="Submit"><em>Submit</em></button>
                 </fieldset>
               </form>
@@ -55,10 +55,10 @@
         </li>
         <li>
           <article>
-            <p>Phasellus</p>
-            <h3 class="heading">Bibendum blandit</h3>
-            <p>Lacus non tincidunt class aptent taciti sociosqu</p>
-            <footer><a class="btn inverse" href="#">Litora torquent</a></footer>
+            <p>Dozivite</p>
+            <h3 class="heading">Svet posle pandemije</h3>
+            <p>Turisticki aranzmani na jedan klik od Vas</p>
+            <footer><a class="btn inverse" href="#">Klik</a></footer>
           </article>
         </li>
       </ul>
@@ -81,7 +81,7 @@
         <li class="one_third"><a href="#"><img src="https://www.sattravel.rs/images/smestaj/galerija/sat-travel-cuba%20(6).jpg" alt=""></a></li>
       </ul>
     </figure>
-    <p class="center"><a class="btn" href="#">Per conubia nostra</a></p>
+    <p class="center"><a class="btn" href="#">Zapocni avanturu</a></p>
     <!-- ################################################################################################ -->
   </div>
 </div>

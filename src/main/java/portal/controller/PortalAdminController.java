@@ -186,7 +186,7 @@ public class PortalAdminController {
     
      @RequestMapping(value = "/UploadServlet",method = RequestMethod.POST)
     public ModelAndView upload(HttpServletRequest request, RedirectAttributes redirectAttrs) {
-        String fileSavePath = context.getRealPath("/") + File.separator + "Upload";/*save uploaded files to a 'Upload' directory in the web app*/
+        String fileSavePath = context.getRealPath("/") + File.separator + "resources";/*save uploaded files to a 'Upload' directory in the web app*/
         if (!(new File(fileSavePath)).exists()) {
             (new File(fileSavePath)).mkdir();    // creates the directory if it does not exist        
         }
@@ -206,7 +206,7 @@ public class PortalAdminController {
                         long fileSize = fPart.writeTo(new File(fileSavePath));
                         resp += i++ + ". " + fPart.getFilePath() + "[" + fileSize / 1024 + " KB]<br>";
                         Image img = new Image();
-                        img.setURL(fileSavePath + name);
+                        img.setURL("http://localhost:8082/Portal/resources/" + name);
                         list.add(img);
                         System.err.println(fileSavePath + name+"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                     } else {

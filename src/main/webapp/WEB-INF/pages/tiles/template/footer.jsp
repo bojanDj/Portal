@@ -19,7 +19,7 @@
 <div class="wrapper row4">
   <footer id="footer" class="hoc clear"> 
     <!-- ################################################################################################ -->
-    <div class="one_quarter first">
+    <div class="one_half first">
       <h6 class="heading">Kontakt</h6>
       <ul class="nospace btmspace-30 linklist contact">
         <li><i class="fa fa-map-marker"></i>
@@ -27,7 +27,7 @@
           Jove Ilica &amp; 47, Beograd, 11000
           </address>
         </li>
-        <li><i class="fa fa-phone"></i> +00 (123) 456 7890</li>
+        <li><i class="fa fa-phone"></i> +00 (381) 11 378 90 00</li>
         <li><i class="fa fa-envelope-o"></i> info@posveta.com</li>
       </ul>
       <ul class="faico clear">
@@ -37,35 +37,16 @@
         <li><a class="faicon-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
       </ul>
     </div>
-    <div class="one_quarter">
-      <h6 class="heading">Urna mauris suscipit</h6>
-      <ul class="nospace linklist">
-        <li><a href="#">Nunc condimentum ut donec</a></li>
-        <li><a href="#">Et tempus metus morbi platea</a></li>
-        <li><a href="#">Sed orci eu urna tristique</a></li>
-        <li><a href="#">Euismod ac in elit quisque</a></li>
-        <li><a href="#">Et porta odio ut gravida</a></li>
-      </ul>
-    </div>
-    <div class="one_quarter">
-      <h6 class="heading">Feugiat imperdiet</h6>
-      <ul class="nospace linklist">
-        <li><a href="#">Augue sit amet ligula</a></li>
-        <li><a href="#">Tristique iaculis semper</a></li>
-        <li><a href="#">Lorem suscipit maecenas</a></li>
-        <li><a href="#">Ultricies feugiat libero</a></li>
-        <li><a href="#">In gravida felis consectetur</a></li>
-      </ul>
-    </div>
-    <div class="one_quarter">
-      <h6 class="heading">Turpis sed non enim</h6>
-      <p class="nospace btmspace-15">Convallis laoreet mi quis ornare ante nam pretium dignissim justo amet consequat.</p>
+    
+    <div class="one_half">
+      <h6 class="heading">Mail lista</h6>
+      <p class="nospace btmspace-15">Prijavite se ukoliko zelite da primate informacije od nas.</p>
       <form method="post" action="#">
         <fieldset>
           <legend>Newsletter:</legend>
-          <input class="btmspace-15" type="text" value="" placeholder="Name">
+          <input class="btmspace-15" type="text" value="" placeholder="Ime">
           <input class="btmspace-15" type="text" value="" placeholder="Email">
-          <button type="submit" value="submit">Submit</button>
+          <button type="submit" value="submit">Prijava</button>
         </fieldset>
       </form>
     </div>
