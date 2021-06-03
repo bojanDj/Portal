@@ -99,7 +99,7 @@
                        value="/WEB-INF/pages/tiles/template/headerUser.jsp">
         </put-attribute>
         <put-attribute name="footer"
-                       value="/WEB-INF/pages/tiles/template/footer.jsp">
+                       value="">
         </put-attribute>
         <put-attribute name="body"
                     value="/WEB-INF/pages/portal/pages/paypal/home.jsp">
