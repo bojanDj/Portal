@@ -5,8 +5,16 @@
  */
 package portal.controller;
 
+import com.oreilly.servlet.multipart.FilePart;
+import com.oreilly.servlet.multipart.MultipartParser;
+import com.oreilly.servlet.multipart.Part;
+import java.io.File;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import portal.dto.Comment;
+import portal.dto.Image;
 import portal.dto.Story;
 import portal.service.StoryService;
 import portal.validator.StoryValidator;
@@ -41,11 +50,15 @@ public class PortalAdminController {
         this.storyValidator = storyValidator;
     }
     
+    @Autowired
+    ServletContext context; 
+    
     @RequestMapping(value = "/addStory", method = RequestMethod.GET)
     public ModelAndView addStory(Principal principal) {
         ModelAndView modelAndView = new ModelAndView("admin/addStory");
         if (principal != null)
             modelAndView.addObject("user", principal.getName());
+        modelAndView.addObject("stories", newService.getAllNews());
         return modelAndView;
     }
     
@@ -78,7 +91,10 @@ public class PortalAdminController {
                                     Principal principal,
                                     RedirectAttributes redirectAttrs) {
         ModelAndView modelAndView = new ModelAndView("redirect:addStory");
-        story.getSlike().get(0).setVest(story);
+        for (int i = 0; i < story.getSlike().size(); i++) {
+            story.getSlike().get(i).setVest(story);
+        }
+        
         try {
             newService.addStory(story);
             redirectAttrs.addFlashAttribute("message", "Nova prica je uspesno uneta!");
@@ -123,5 +139,44 @@ public class PortalAdminController {
         }
         newService.updateStory(n);
         return modelAndView;
+    }
+    
+     @RequestMapping(value = "/UploadServlet",method = RequestMethod.POST)
+    public ModelAndView upload(HttpServletRequest request, RedirectAttributes redirectAttrs) {
+        String fileSavePath = context.getRealPath("/") + File.separator + "Upload";/*save uploaded files to a 'Upload' directory in the web app*/
+        if (!(new File(fileSavePath)).exists()) {
+            (new File(fileSavePath)).mkdir();    // creates the directory if it does not exist        
+        }
+        String resp = "";
+        int i = 1;
+        resp += "<br>Ucitane slike:<br>";
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/addStory");
+        try {
+            MultipartParser parser = new MultipartParser(request, 1024 * 1024 * 1024);  /* file limit size of 1GB*/
+            Part _part;
+            List<Image> list = new LinkedList<>();
+            while ((_part = parser.readNextPart()) != null) {
+                if (_part.isFile()) {
+                    FilePart fPart = (FilePart) _part;  // get some info about the file
+                    String name = fPart.getFileName();
+                    if (name != null) {
+                        long fileSize = fPart.writeTo(new File(fileSavePath));
+                        resp += i++ + ". " + fPart.getFilePath() + "[" + fileSize / 1024 + " KB]<br>";
+                        Image img = new Image();
+                        img.setURL(fileSavePath + name);
+                        list.add(img);
+                        System.err.println(fileSavePath + name+"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                    } else {
+                        resp = "<br>The user did not upload a file for this part.";
+                    }
+                }
+                
+            }// end while 
+            redirectAttrs.addFlashAttribute("list", list);
+        } catch (java.io.IOException ioe) {
+            resp = ioe.getMessage();
+        }
+        redirectAttrs.addFlashAttribute("message", resp);
+       return modelAndView;
     }
 }

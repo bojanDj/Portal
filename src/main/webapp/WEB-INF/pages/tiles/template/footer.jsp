@@ -20,15 +20,15 @@
   <footer id="footer" class="hoc clear"> 
     <!-- ################################################################################################ -->
     <div class="one_quarter first">
-      <h6 class="heading">Mauris ac pulvinar</h6>
+      <h6 class="heading">Kontakt</h6>
       <ul class="nospace btmspace-30 linklist contact">
         <li><i class="fa fa-map-marker"></i>
           <address>
-          Street Name &amp; Number, Town, Postcode/Zip
+          Jove Ilica &amp; 47, Beograd, 11000
           </address>
         </li>
         <li><i class="fa fa-phone"></i> +00 (123) 456 7890</li>
-        <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
+        <li><i class="fa fa-envelope-o"></i> info@posveta.com</li>
       </ul>
       <ul class="faico clear">
         <li><a class="faicon-facebook" href="#"><i class="fa fa-facebook"></i></a></li>

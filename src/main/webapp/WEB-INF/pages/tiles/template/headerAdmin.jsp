@@ -40,10 +40,10 @@
               <li><a href="#">Level 2</a></li>
             </ul>
           </li>-->
-          <li><a href="<c:url value = "/admin/addStory"/>">Dodaj pricu!</a></li>
-          <li><a href="<c:url value = "/admin/comments"/>">Komentari</a></li>
-          <c:if test="${not empty user}"><li><a href="<c:url value = "/logout"/>">${user}, izloguj se</a></li></c:if>
-<c:if test="${empty user}"><li><a href="<c:url value = "/login"/>">Uloguj se</a></li></c:if> 
+<li><a style="text-decoration: none;" href="<c:url value = "/admin/addStory"/>">Dodaj pricu!</a></li>
+          <li><a style="text-decoration: none;" href="<c:url value = "/admin/comments"/>">Komentari</a></li>
+          <c:if test="${not empty user}"><li><a style="text-decoration: none;" href="<c:url value = "/logout"/>">${user}, izloguj se</a></li></c:if>
+<c:if test="${empty user}"><li><a style="text-decoration: none;" href="<c:url value = "/login"/>">Uloguj se</a></li></c:if> 
         </ul>
       </nav>
       <!-- ################################################################################################ -->

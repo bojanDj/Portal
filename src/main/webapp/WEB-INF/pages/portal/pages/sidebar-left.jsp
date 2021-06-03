@@ -131,14 +131,18 @@ Licence URI: https://www.os-templates.com/template-terms
         </ul>
         <h2>Napisite komentar</h2>
         <form:form action="${pageContext.request.contextPath}/portal/new/story${story.id}/addComment" method="POST" modelAttribute="comment">
-          <div class="one_half first">
+            <c:if test="${empty user}">
+            <div class="one_half first">
             <label for="name">Ime <span>*</span></label>
             <form:input type="text" name="name" id="name" value="${user}" size="22" path="username"></form:input>
           </div>
+          </c:if>
+            <c:if test="${empty user}">
           <div class="one_half">
             <label for="email">Mail <span>*</span></label>
             <input type="email" name="email" id="email" value="" size="22" required>
           </div>
+        </c:if>
           <div class="block clear">
             <label for="comment">Komentar</label>
             <form:textarea name="comment" id="comment" cols="25" rows="10" path="komentar"></form:textarea>

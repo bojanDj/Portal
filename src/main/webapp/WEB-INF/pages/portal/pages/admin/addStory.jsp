@@ -24,7 +24,7 @@ Licence URI: https://www.os-templates.com/template-terms
 <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <style>
     #wrapper {
-    width: 500px;
+        margin-top: 5%;
     overflow: hidden; /* will contain if #first is longer than #second */
 }
 #first {
@@ -33,6 +33,7 @@ Licence URI: https://www.os-templates.com/template-terms
 }
 #second {
     overflow: hidden; /* if you don't want #second to wrap below #first */
+    margin-left: 10%;
 }
 </style>
 </head>
@@ -51,7 +52,7 @@ Licence URI: https://www.os-templates.com/template-terms
     <!-- ################################################################################################ -->
     <div class="sidebar one_quarter first"> 
       <!-- ################################################################################################ -->
-      <h6>Lorem ipsum dolor</h6>
+      <h6>Navigacija</h6>
       <nav class="sdb_holder">
         <ul>
           <li><a href="#">Navigation - Level 1</a></li>
@@ -76,39 +77,32 @@ Licence URI: https://www.os-templates.com/template-terms
         </ul>
       </nav>
       <div class="sdb_holder">
-        <h6>Lorem ipsum dolor</h6>
+        <h6>Kontakt</h6>
         <address>
-        Full Name<br>
-        Address Line 1<br>
-        Address Line 2<br>
-        Town/City<br>
-        Postcode/Zip<br>
+        Put oko sveta<br>
+        Jove Ilica 47<br>
+        Vojvode Stepe 209<br>
+        Beograd<br>
+        11000<br>
         <br>
-        Tel: xxxx xxxx xxxxxx<br>
-        Email: <a href="#">contact@domain.com</a>
+        Tel: +381 11 123 45 68<br>
+        Email: <a href="#">contact@posveta.com</a>
         </address>
-      </div>
-      <div class="sdb_holder">
-        <article>
-          <h6>Lorem ipsum dolor</h6>
-          <p>Nuncsed sed conseque a at quismodo tris mauristibus sed habiturpiscinia sed.</p>
-          <ul>
-            <li><a href="#">Lorem ipsum dolor sit</a></li>
-            <li>Etiam vel sapien et</li>
-            <li><a href="#">Etiam vel sapien et</a></li>
-          </ul>
-          <p>Nuncsed sed conseque a at quismodo tris mauristibus sed habiturpiscinia sed. Condimentumsantincidunt dui mattis magna intesque purus orci augue lor nibh.</p>
-          <p class="more"><a href="#">Continue Reading &raquo;</a></p>
-        </article>
       </div>
       <!-- ################################################################################################ -->
     </div>
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
-    <div class="content three_quarter">     
+    <div class="content three_quarter">   
+         
       <div id="comments">
           <h1>${message}</h1>
         <h2>Unesite novu uzbudljivu pricu!</h2>
+        <form action="UploadServlet" method="post" enctype="multipart/form-data">
+            <input type="file" id="file" name="file1" accept="image/*"  multiple="muliple" required/><br>
+            <button type="submit" class="btn">Ucitaj slike</button>
+           <br><br>
+        </form>
         <form:form action="${pageContext.request.contextPath}/admin/addStory" method="POST" modelAttribute="story">
           <div class="one_third first">
             <label for="name">Naslov <span>*</span></label>
@@ -118,17 +112,19 @@ Licence URI: https://www.os-templates.com/template-terms
             <label for="email">Kratak opis <span>*</span></label>
           <form:input type="text" name="kratakOpis" id="email" value="" size="100" path="kratakOpis"></form:input>
           </div>
-          <div class="one_third">
-            <label for="url">Url</label>
-          <form:input type="url" name="url" id="url" value="" size="22" path="slike[0].URL"></form:input>
+                    <div id="wrapper" class="one_third">
+            <div id="first"><form:radiobutton path="premium" value="true"></form:radiobutton></div>
+            <div id="second">Premium prica?</div>
           </div>
+          <c:forEach var="imge" items="${list}" varStatus="loop">
+          <div class="one_third" style="display: none;">
+            <label for="url">Url</label>
+          <form:input type="hidden" name="url" id="url" value="${list[loop.index].URL}" size="1000" path="slike[${loop.index}].URL"></form:input>
+          </div>
+          </c:forEach>
           <div class="block clear">
             <label for="comment">Prica</label>
             <form:textarea name="comment" id="comment" cols="25" rows="10" path="tekst"></form:textarea>
-          </div>
-          <div id="wrapper">
-            <div id="first"><form:radiobutton path="premium" value="true"></form:radiobutton></div>
-            <div id="second">Premium prica?</div>
           </div>
           <div>
               <button type="submit" name="submit" class="btn" href="/">Dodaj pricu</button>

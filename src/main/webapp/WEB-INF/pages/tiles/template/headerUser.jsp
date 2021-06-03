@@ -15,8 +15,8 @@
       </div>
       <nav id="mainav" class="fl_right">
         <ul class="clear">
-          <li class="active"><a href="<c:url value = "/portal/home"/>">Home</a></li>
-          <li><a href="<c:url value = "/portal/payhome"/>">Premium nalog!</a></li>
+          <li class="active"><a style="text-decoration: none;" href="<c:url value = "/portal/home"/>">Home</a></li>
+          <li><a  style="text-decoration: none;"href="<c:url value = "/portal/payhome"/>">Premium nalog!</a></li>
 <!--          <li><a class="drop" href="#">Pages</a>
             <ul>
               <li><a href="pages/gallery.html">Gallery</a></li>
@@ -41,8 +41,8 @@
           </li>
           <li><a href="#">Link Text</a></li>
           <li><a href="#">Link Text</a></li>-->
-          <c:if test="${not empty user}"><li><a href="<c:url value = "/logout"/>">${user}, izloguj se</a></li></c:if>
-<c:if test="${empty user}"><li><a href="<c:url value = "/login"/>">Uloguj se</a></li></c:if> 
+          <c:if test="${not empty user}"><li><a style="text-decoration: none;" href="<c:url value = "/logout"/>">${user}, izloguj se</a></li></c:if>
+<c:if test="${empty user}"><li><a style="text-decoration: none;" href="<c:url value = "/login"/>">Uloguj se</a></li></c:if> 
         </ul>
       </nav>
       <!-- ################################################################################################ -->
