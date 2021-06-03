@@ -11,8 +11,11 @@ import com.oreilly.servlet.multipart.Part;
 import java.io.File;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TimeZone;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +36,7 @@ import portal.dto.Image;
 import portal.dto.Story;
 import portal.service.StoryService;
 import portal.validator.StoryValidator;
+import java.util.Locale;
 
 /**
  *
@@ -58,7 +62,46 @@ public class PortalAdminController {
         ModelAndView modelAndView = new ModelAndView("admin/addStory");
         if (principal != null)
             modelAndView.addObject("user", principal.getName());
-        modelAndView.addObject("stories", newService.getAllNews());
+        List<Story> lista = newService.getAllNews();
+        modelAndView.addObject("price", lista);
+//        Collections.sort(list, (x, y) -> x.getDrzava().compareTo(y.getDrzava()));
+//        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
+//        List<Navigation> lista = new ArrayList(Navigation);
+//        for (int i = 0; i < list.size(); i++) {
+//            Story s = list.get(i);
+//            cal.setTime(s.getDatum());
+//            Navigation n = new Navigation();
+//            n.setId(s.getId);
+//            n.setNaslov(s.getNaslov());
+//            n.setYear(cal.get(Calendar.YEAR));
+//            n.setMonth(cal.get(Calendar.MONTH));
+//            lista.add(n);
+//        }
+        String[] countryCodes = Locale.getISOCountries();
+        List<String> count = new ArrayList<String>();
+        for (String countryCode : countryCodes) {
+            Locale locale = new Locale("", countryCode);
+            String code = locale.getCountry();
+            String name = locale.getDisplayCountry();
+            count.add(name);
+        }
+        modelAndView.addObject("locale", count);
+
+        List<String> listDrzava = new ArrayList<>();
+        for (Story story: lista) {
+            if (!listDrzava.contains(story.getDrzava())) listDrzava.add(story.getDrzava());
+        }
+        modelAndView.addObject("countries", listDrzava);
+        
+       
+//        List<Integer> years = new ArrayList<Integer>();
+//        for (int i = 0; i < list.size(); i++) {
+//            Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
+//            cal.setTime(list.get(i).getDatum());
+//            if (!years.contains(cal.get(Calendar.YEAR))) years.add(cal.get(Calendar.YEAR));
+//        }
+//        List<Integer> sortedList = years.stream().sorted().collect(Collectors.toList());
+//        modelAndView.addObject("years", sortedList);
         return modelAndView;
     }
     

@@ -13,6 +13,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,15 @@ public class PortalNewsController {
             modelAndView = new ModelAndView("redirect:/portal/home");
             redirectAttrs.addFlashAttribute("message","Nije Vam omogucen pristup premium pricama.");
         }
+        
+        List<Story> lista = newService.getAllNews();
+        modelAndView.addObject("price", lista);
+        
+        List<String> listDrzava = new ArrayList<>();
+        for (Story stor: lista) {
+            if (!listDrzava.contains(stor.getDrzava())) listDrzava.add(stor.getDrzava());
+        }
+        modelAndView.addObject("countries", listDrzava);
         
         return modelAndView;
     }

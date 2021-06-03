@@ -4,9 +4,12 @@
     Author     : Bojan
 --%>
 
+<%@page import="portal.dto.Story"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <!--
 Template Name: Skaxis
@@ -55,25 +58,17 @@ Licence URI: https://www.os-templates.com/template-terms
       <h6>Navigacija</h6>
       <nav class="sdb_holder">
         <ul>
-          <li><a href="#">Navigation - Level 1</a></li>
-          <li><a href="#">Navigation - Level 1</a>
-            <ul>
-              <li><a href="#">Navigation - Level 2</a></li>
-              <li><a href="#">Navigation - Level 2</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Navigation - Level 1</a>
-            <ul>
-              <li><a href="#">Navigation - Level 2</a></li>
-              <li><a href="#">Navigation - Level 2</a>
-                <ul>
-                  <li><a href="#">Navigation - Level 3</a></li>
-                  <li><a href="#">Navigation - Level 3</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="#">Navigation - Level 1</a></li>
+            <c:forEach var = "country" items="${countries}">
+                <li><a href="#">${country}</a>
+                    <ul>
+                <c:forEach var = "story" items="${price}">
+                    <c:if test="${story.drzava == country}">
+                        <li><a href="${pageContext.request.contextPath}/portal/new/${story.id}">${story.naslov}</a></li>
+                    </c:if>
+                </c:forEach>
+                        </ul>
+                </li>
+            </c:forEach>
         </ul>
       </nav>
       <div class="sdb_holder">
@@ -126,6 +121,11 @@ Licence URI: https://www.os-templates.com/template-terms
             <label for="comment">Prica</label>
             <form:textarea name="comment" id="comment" cols="25" rows="10" path="tekst"></form:textarea>
           </div>
+            <form:select name="country" id="country" path="drzava" style="margin-bottom:2%;">
+        <c:forEach items="${locale}" var="country">
+            <option value="${country}">${country}</option>
+        </c:forEach>
+        </form:select>
           <div>
               <button type="submit" name="submit" class="btn" href="/">Dodaj pricu</button>
           </div>

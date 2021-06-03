@@ -6,6 +6,7 @@
 package portal.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -39,6 +40,17 @@ public class Story implements Serializable{
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Image> slike;
     private boolean premium;
+    private String drzava;
+
+    public String getDrzava() {
+        return drzava;
+    }
+
+    public void setDrzava(String drzava) {
+        this.drzava = drzava;
+    }
+    
+    
 
     public Story() {
         
